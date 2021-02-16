@@ -1,5 +1,10 @@
 const sumItems = array => {
   // Sum all the numbers in the array
+  array.forEach((item) => {
+    if (Array.isArray(item)) {
+      console.log('I am a nested array.');
+    }
+  });
   // base case: if only one layer of array
   let result = array.reduce((sum, i) => sum + i);
   return result;
@@ -24,8 +29,8 @@ module.exports = sumItems;
 
 // Pattern:
 // sumItems[0, 1] = 1
-// sumItems[0, [1]] = sumItems[0, 1] + sumItems[1]
-// sumItems[0, [[1]]] = sumItms[0, 1] + sumItems[[1]]
+// sumItems[0, [1]] = sumItems[0, 1] + []
+// sumItems[0, [[1]]] = sumItms[0, 1] + [[]]
 
 // Recursion Implementation
-// sumItems[arr, [nestedArr]] = sumItems[arr] + sumItems[nestedArr]
+// sumItems[arr, [nestedArr]] = sumItems[arr, nestedArr] + empty array brackets
