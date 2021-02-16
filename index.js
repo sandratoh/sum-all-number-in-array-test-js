@@ -1,19 +1,18 @@
 const sumItems = array => {
   // Sum all the numbers in the array
-  let result;
+  let result = 0;
 
   array.forEach((item) => {
     // recursive case: if nested array
     if (Array.isArray(item)) {
-      // console.log('I am a nested array.');
-      sumItems(item);
+      result += sumItems(item);
 
     } else {
       // base case: if only one layer of array
-      result = array.reduce((sum, i) => sum + i);
+      result += item;
     }
   });
-  
+
   return result;
 };
 
@@ -30,4 +29,4 @@ module.exports = sumItems;
 // sumItems[0, [[1]]] = sumItms[0, 1] + [[]]
 
 // Recursion Implementation
-// sumItems[arr, [nestedArr]] = sumItems[arr, nestedArr] + empty array brackets
+// sumItems[arr, [nestedArr]] = sumItems[arr, nestedArr]
